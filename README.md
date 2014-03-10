@@ -1,8 +1,7 @@
-# S3 Log Analyzer
+# Elastic Load Balancing Access Logs Analyzer
+A NodeJS app to generate reports based on AWS Elastic Load Balancing Access Logs. 
 
-A NodeJS app to generate reports based on AWS S3 Access Logs. 
-
-The app will access the configured S3 bucket containing the logs, read them and generate a CSV report containing the Domain Name and Domain Count based of the number of the domain occurences within the log.
+The app will access the configured S3 bucket containing the elb logs, read them and generate a CSV report containing the Domain Name and Domain Count based of the number of the domain occurences within the log.
 
 This app is built using the LocomotiveJS MVC web framework as it contains Express as well as future support for the app's Web Interface.
 
@@ -28,12 +27,12 @@ App configuration can be set in ``config\config.json``
         "region" : "my-region",
         "access_key_id" : "my-access-key-id",
         "secret_access_key" : "mysecretaccesskey",
-        "bucket"    :   "s3-log-bucket-name",
-        "folder"    :   "path/to/s3/logs"
+        "bucket"    :   "aws-elb-log-bucket-name",
+        "folder"    :   "path/to/elb/logs"
     }
 
 3. Log filters
-    * S3 Log folders may contain huge amount of log files. For testing and limiting purposes, limit the number of processed log by supplying ``max_keys``. Setting ``max_keys : ""`` will process **all** logs within the folder.
+    * AWS ELB Access Log folders may contain huge amount of log files. For testing and limiting purposes, limit the number of processed log by supplying ``max_keys``. Setting ``max_keys : ""`` will process **all** logs within the folder.
     * Note that by default, to avoid performance issues, the app will only process current day logs. To process logs on a previous date, supply a date folder string in ``date_folder`` with a format of ``{yyyy}\{mm}\{dd}``.
 4. App logs
     * Every app execution is saved into the ``logs`` folder. You can set a custom log name via ``app_log : { "name" : "my_log_name"}``. This will save the logs in ``logs/my_log_name_{timestamp}.log`` format. Logs will be created per app execution.
@@ -47,7 +46,7 @@ App configuration can be set in ``config\config.json``
 
 ## Running the app
 1. Download the sources using Git.
-2. Navigate through the app folder: ``cd s3-log-analyzer``.
+2. Navigate through the app folder: ``cd elb-access-log-analyzer``.
 3. Inside the app folder, install the dependencies: ``npm install`` (may require sudo access).
 4. Run the app using ``node app.js``. To switch to an environment config e.g. ``development`` use ``NODE_ENV=development node app.js``.
 

@@ -87,7 +87,6 @@ exports.generateReport = function(next){
 	var self = this;
 	//some init
 	moment = require('moment');
-	var date = moment().format('YYYY-MM-DD'); 
 	var logger = applogger.getLogger('app_log');
 
 	//check config for paths
@@ -96,7 +95,7 @@ exports.generateReport = function(next){
 	//start the process
 	self.startProcess = process.hrtime();
 	
-	logger.info('S3 Log Analyzer Initiated...');
+	logger.info('ELB Access Log Analyzer Initiated...');
 
 	async.waterfall(
 	[
@@ -105,8 +104,8 @@ exports.generateReport = function(next){
 			logger.info('Connecting to S3 log directory ...');
 			logger.info('Fetching logs ...');
 
-			//limit objects processing to the current date
-			var current_date_str = '/' + moment().format('YYYY/MM/DD');
+			var current_date_str = configSettings.log_filters.date_folder || moment().format('YYYY/MM/DD');
+			current_date_str = '/' + current_date_str;
 
 			var params = {
 				'prefix' : configSettings.aws.folder + configSettings.aws.region + current_date_str,
@@ -123,7 +122,7 @@ exports.generateReport = function(next){
 		},
 		// Analyze the logs
 		function(data, callback){
-			var s3_analyzer = self;
+			var elb_analyzer = self;
 
 			var recurseBucket = function(callback, index){
 				if(index == undefined)
@@ -133,7 +132,7 @@ exports.generateReport = function(next){
 					return callback(null);
 				}else{
 					if(data.Contents[index].Key.match('.log$')){
-						var current_date_str = moment().format('YYYY/MM/DD');
+						
 						var tmpLogKey = data.Contents[index].Key;
 
 						logger.info('Processing \''+ tmpLogKey +'\'');
@@ -151,7 +150,7 @@ exports.generateReport = function(next){
 								objectBuffer+=chunk.toString();
 							});
 							res.on('end',function(){
-								s3_analyzer.evaluateLog({logString : objectBuffer},function(){
+								elb_analyzer.evaluateLog({logString : objectBuffer},function(){
 									//proceed to next object
 									recurseBucket(callback,index+1);
 								});

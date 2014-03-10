@@ -8,7 +8,7 @@
 			"folder"				: ""
 		},
 		"log_filters" : {
-			"max_keys" : ""
+			"max_keys" : "",
 			"date_folder" : ""
 		},
 		"app_log":{

@@ -8,7 +8,7 @@
 			"folder"				: ""
 		},
 		"log_filters" : {
-			"max_keys" : 1
+			"max_keys" : ""
 		},
 		"app_log":{
 			"name" : "s3_analyzer_logs"

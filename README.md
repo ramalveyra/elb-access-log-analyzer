@@ -24,13 +24,14 @@ App configuration can be set in ``config\config.json``
 2. AWS S3 config
     
     ```javascript
-        "aws"  : {
-            "region" : "my-region",
-            "access_key_id" : "my-access-key-id",
-            "secret_access_key" : "mysecretaccesskey",
-            "bucket"    :   "s3-log-bucket-name",
-            "folder"    :   "path/to/s3/logs"
-        }
+    "aws"  : {
+        "region" : "my-region",
+        "access_key_id" : "my-access-key-id",
+        "secret_access_key" : "mysecretaccesskey",
+        "bucket"    :   "s3-log-bucket-name",
+        "folder"    :   "path/to/s3/logs"
+    }
+
 3. Log filters
     * S3 Log folders may contain huge amount of log files. For testing and limiting purposes, limit the number of processed log by supplying ``max_keys``. Setting ``max_keys : ""`` will process **all** logs within the folder.
     * Note that by default, to avoid performance issues, the app will only process current day logs.
@@ -53,7 +54,7 @@ App configuration can be set in ``config\config.json``
 ## Reports
 Domain reports (single file):
 
-<table border=1>
+<table border="0">
 <tr>
 <th>domainName</th><th>totalDomainCount</th>
 </tr>
@@ -68,9 +69,8 @@ Domain reports (single file):
 </tr>
 </table>
 
-
 Domain Reports by Path (single file):
-<table border=1>
+<table border="0">
 <tr>
 <th>domainName</th><th>path</th><th>pathCount</th>
 </tr>

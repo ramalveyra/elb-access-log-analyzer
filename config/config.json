@@ -1,0 +1,25 @@
+{
+	"default":{
+		"aws": {
+			"region"				: "",
+			"access_key_id"			: "",
+			"secret_access_key"		: "",
+			"bucket"				: "",
+			"folder"				: ""
+		},
+		"log_filters" : {
+			"max_keys" : 1
+		},
+		"app_log":{
+			"name" : "s3_analyzer_logs"
+		},
+		"exported_report" :{
+			"name_prefix" : "report",
+			"report_type" : "domain"
+		}
+	},
+	"development": {
+	},
+	"production": {
+	}
+}

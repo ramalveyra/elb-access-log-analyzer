@@ -9,6 +9,7 @@
 		},
 		"log_filters" : {
 			"max_keys" : ""
+			"date_folder" : ""
 		},
 		"app_log":{
 			"name" : "s3_analyzer_logs"

@@ -34,7 +34,7 @@ App configuration can be set in ``config\config.json``
 
 3. Log filters
     * S3 Log folders may contain huge amount of log files. For testing and limiting purposes, limit the number of processed log by supplying ``max_keys``. Setting ``max_keys : ""`` will process **all** logs within the folder.
-    * Note that by default, to avoid performance issues, the app will only process current day logs.
+    * Note that by default, to avoid performance issues, the app will only process current day logs. To process logs on a previous date, supply a date folder string in ``date_folder`` with a format of ``{yyyy}\{mm}\{dd}``.
 4. App logs
     * Every app execution is saved into the ``logs`` folder. You can set a custom log name via ``app_log : { "name" : "my_log_name"}``. This will save the logs in ``logs/my_log_name_{timestamp}.log`` format. Logs will be created per app execution.
 5. Report options

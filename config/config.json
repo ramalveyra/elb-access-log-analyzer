@@ -12,7 +12,6 @@
 			"date_folder" : ""
 		},
 		"app_log":{
-			"name" : "s3_analyzer_logs"
 			"name" : "elb_analyzer_logs"
 		},
 		"exported_report" :{

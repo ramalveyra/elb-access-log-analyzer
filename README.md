@@ -30,7 +30,7 @@ App configuration can be set in ``config\config.json``
             "secret_access_key" : "mysecretaccesskey",
             "bucket"    :   "s3-log-bucket-name",
             "folder"    :   "path/to/s3/logs"
-        }```    
+        }
 3. Log filters
     * S3 Log folders may contain huge amount of log files. For testing and limiting purposes, limit the number of processed log by supplying ``max_keys``. Setting ``max_keys : ""`` will process **all** logs within the folder.
     * Note that by default, to avoid performance issues, the app will only process current day logs.
@@ -38,7 +38,7 @@ App configuration can be set in ``config\config.json``
     * Every app execution is saved into the ``logs`` folder. You can set a custom log name via ``app_log : { "name" : "my_log_name"}``. This will save the logs in ``logs/my_log_name-{yyyy-mm-dd}.log`` format. Logs will be created to a per day basis and logs for the current day will be appended to the current day log.
 5. Report options
     * The generated report options can be set in ``exported_report`` config.
-    * ``name_prefix`` will set a prefix to the generated report, e.g. ``name_prefix: "my_report"`` will generate ``reports/{yyyy}/{mm}/{dd}/{timestamp}/my_report.csv``.
+    * ``name_prefix`` will set a prefix to the generated report, e.g. ``name_prefix: "my_report"`` will generate ``reports/{timestamp}/my_report.csv``.
     * The app currently generates three format types, Domain reports in a single file, Path reports single and multiple files.
         * To set a report as Domain : ``report_type : "domain"``.
         * To set Path report on a single file use : ``report_type : { path : singleFile }``
@@ -68,7 +68,7 @@ Domain reports (single file):
 </tr>
 </table>
 
-<br>
+
 Domain Reports by Path (single file):
 <table border=1>
 <tr>
@@ -94,10 +94,10 @@ Domain Reports by Path (single file):
 </tr>
 </table>
 
-<br>
+
 Reports by path (multiple files) format will be the same as above only they are separated into files by domain:
-``reports/{yyyy}/{mm}/{dd}/{timestamp}/example.com.csv``
-``reports/{yyyy}/{mm}/{dd}/{timestamp}/example1.com.csv`` etc.
+``reports/{timestamp}/example.com.csv``
+``reports/{timestamp}/example1.com.csv`` etc.
 
 
 ##Contributors

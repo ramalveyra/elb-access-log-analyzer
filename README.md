@@ -48,7 +48,7 @@ App configuration can be set in ``config\config.json``
 1. Download the sources using Git.
 2. Navigate through the app folder: ``cd elb-access-log-analyzer``.
 3. Inside the app folder, install the dependencies: ``npm install`` (may require sudo access).
-4. Run the app using ``node app.js``. To switch to an environment config e.g. ``development`` use ``NODE_ENV=development node app.js``.
+4. Run the app using ``node app.js``. To switch to an environment config e.g. ``development`` use ``NODE_ENV=development node app.js``. Note consider running the app on higher V8 memory to avoid memory error (see troubleshooting). Use ``node --max-old-space-size=8192 app.js`` instead.
 
 ## Reports
 Domain reports (single file):
@@ -98,6 +98,10 @@ Reports by path (multiple files) format will be the same as above only they are 
 ``reports/{timestamp}/example.com.csv``
 ``reports/{timestamp}/example1.com.csv`` etc.
 
+##Troubleshooting
+``FATAL ERROR- JS Allocation failed - process out of memory, while parsing large excel files``
+In case of this error, try increasing memory limit of v8 engine (https://github.com/joyent/node/wiki/FAQ) when running the app
+``node --max-old-space-size=8192 app.js`` 
 
 ##Contributors
 [@ramalveyra](https://github.com/ramalveyra)

@@ -95,7 +95,8 @@ exports.generateReport = function(next){
 
 	//start the process
 	self.startProcess = process.hrtime();
-	logger.info('S3 Logger Initiated...');
+	
+	logger.info('S3 Log Analyzer Initiated...');
 
 	async.waterfall(
 	[
@@ -230,6 +231,7 @@ exports.generateReport = function(next){
 			    		'Time elapsed: ', elapsedFormat.format('H [hours,]'), 
 			    		elapsedFormat.format('mm [minutes,]'), 
 			    		(duration < 60 ? duration + ' seconds' : elapsedFormat.format('s [seconds]')));
+			    	logger.info('Log available in:\'logs/'+applogger.log_name+'\'');
 			    	return next();
 				});
 			});
@@ -253,6 +255,7 @@ exports.generateReport = function(next){
 			    		'Time elapsed: ', elapsedFormat.format('H [hours,]'), 
 			    		elapsedFormat.format('mm [minutes,]'), 
 			    		(duration < 60 ? duration + ' seconds' : elapsedFormat.format('s [seconds]')));
+			    	logger.info('Log available in:\'logs/'+applogger.log_name+'\'');
 					return callback();
 				}
 				if(reportArray[index].domainName == prevDomain){

@@ -6,13 +6,13 @@
     "locomotive": "0.3.x",
     "express": "3.x.x",
     "connect-powered-by": "0.1.x",
-    "ejs": "0.8.x",
     "nconf": "~0.6.9",
     "moment": "~2.4.0",
     "async": "~0.2.9",
     "log4js": "~0.6.9",
-    "aws-sdk": "~2.0.0-rc3",
     "knox": "~0.8.9",
-    "json2csv": "~2.2.1"
+    "levelup": "0.18.2",
+    "leveldown": "0.10.2",
+    "csv": "0.3.7"
   }
 }

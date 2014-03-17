@@ -11,7 +11,8 @@ This app is built using the LocomotiveJS MVC web framework as it contains Expres
 3. moment - Date/Time features
 4. log4js - Used for the app's logging.
 5. knox - Used as the library to communicate with AWS
-6. json2csv - Library for CSV generation
+6. node-csv - Library for CSV generation (using streaming)
+7. level - library for storing key-value pairs
 
 ## Configuration
 These must be configured before running the app.
@@ -48,7 +49,7 @@ App configuration can be set in ``config\config.json``
 1. Download the sources using Git.
 2. Navigate through the app folder: ``cd elb-access-log-analyzer``.
 3. Inside the app folder, install the dependencies: ``npm install`` (may require sudo access).
-4. Run the app using ``node app.js``. To switch to an environment config e.g. ``development`` use ``NODE_ENV=development node app.js``. Note consider running the app on higher V8 memory to avoid memory error (see troubleshooting). Use ``node --max-old-space-size=8192 app.js`` instead.
+4. Run the app using ``node app.js``. To switch to an environment config e.g. ``development`` use ``NODE_ENV=development node app.js``.
 
 ## Reports
 Domain reports (single file):
@@ -98,10 +99,12 @@ Reports by path (multiple files) format will be the same as above only they are 
 ``reports/{timestamp}/example.com.csv``
 ``reports/{timestamp}/example1.com.csv`` etc.
 
-##Troubleshooting
-``FATAL ERROR- JS Allocation failed - process out of memory, while parsing large excel files``
-In case of this error, try increasing memory limit of v8 engine (https://github.com/joyent/node/wiki/FAQ) when running the app
-``node --max-old-space-size=8192 app.js`` 
+## Version 0.2
+* ELB Log Analyzer have been reworked.
+* Performance should be stable and report generated should be more reliable.
+* App now uses the level library for storing key-value pairs. This is to handle massive memory load of the reports by path previously saved into memory which causes memory leaks.
+* App should be able to generate whole day reports for domain paths as a single file and domain paths report per domain (multi-file).
+* Contains bug fixes
 
 ##Contributors
 [@ramalveyra](https://github.com/ramalveyra)

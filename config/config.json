@@ -1,11 +1,11 @@
 {
 	"default":{
 		"aws": {
-			"region"				: "us-east-1",
-			"access_key_id"			: "AKIAIYNWQBQNXGMKMTYA",
-			"secret_access_key"		: "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",
-			"bucket"				: "elb-l7-accesslogs-bucket-staging",
-			"folder"				: "AWSLogs/151091030270/elasticloadbalancing/"
+			"region"				: "",
+			"access_key_id"			: "",
+			"secret_access_key"		: "",
+			"bucket"				: "",
+			"folder"				: ""
 		},
 		"log_filters" : {
 			"max_keys" : "",

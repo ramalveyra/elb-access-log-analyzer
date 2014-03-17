@@ -95,15 +95,16 @@ exports.generateReport = function(next){
 		//cleanup first
 		function(callback){
 			//Destroy the db
-			require('leveldown').destroy('db', function (err) {
+			/*require('leveldown').destroy('db', function (err) {
 				logger.info('Cleaning up old files...');
 				return callback();
-			})
+			})*/
+			return callback();
 		},
 		//initialize level
 		function(callback){
 			logger.info('Initiating leveldb...')
-			self.db = levelup('db',{ valueEncoding: 'json', keyEncoding : 'json' });
+			self.db = levelup('db'+'/'+self.reportTimeStamp,{ valueEncoding: 'json', keyEncoding : 'json' });
 			return callback();
 		},
 		//create the db directory if it does not exits yet
